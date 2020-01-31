@@ -34,7 +34,9 @@
 # SOFTWARE.
 
 import sys
-sys.path.append('pyaxidraw')
+import os
+sys.path.append(os.path.join(os.path.expanduser("~"), ".config", "inkscape", "extensions", "plotink"))
+sys.path.append("/usr/share/inkscape/extensions")
 
 try:
     from plot_utils_import import from_dependency_import # plotink
@@ -49,7 +51,10 @@ except:
 
 import gettext
 import math
-import plot_utils        # https://github.com/evil-mad/plotink  Requires version 0.15
+try:
+	import plot_utils        # https://github.com/evil-mad/plotink  Requires version 0.15
+except:
+	from plotink import plot_utils  # https://github.com/evil-mad/plotink
 from lxml import etree
 
 """
